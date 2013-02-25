@@ -1,0 +1,1 @@
+python F:\test\html\javascript\manage.py runserver
