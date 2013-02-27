@@ -7,7 +7,7 @@ import threading
 import subprocess
 import time
 import shlex
-
+import ctypes
 
 #Producer thread
 
@@ -55,7 +55,7 @@ class Consumer(threading.Thread):
                 stdout = subprocess.PIPE,
                 stderr = subprocess.PIPE, shell = False)
                 print pipe.stdout.read()
-                pipe.kill()
+                ctypes.windll.kernel32.TerminateProcess(int(pipe._handle), -1)
                 #print  "output: %s" % (val)
                 con.notify()
             con.release()
